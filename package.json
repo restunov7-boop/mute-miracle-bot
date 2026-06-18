@@ -1,5 +1,15 @@
 {
+  "name": "mute-miracle-bot",
+  "version": "1.0.0",
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "grammy": "^1.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
   }
 }
