@@ -20,7 +20,9 @@ bot.command('start', async (ctx) => {
       telegram_chat_id: ctx.chat.id,
     });
   }
-  await ctx.reply('Тишина услышана. Я буду напоминать тебе о саде и круге.');
+  await ctx.reply('🌿 Тишина услышана...', {
+  reply_markup: { inline_keyboard: [[{ text: 'Открыть Mute Miracle', url: 'https://t.me/MuteM_bot/app' }]] }
+});
 });
 
 module.exports = async (req, res) => {
