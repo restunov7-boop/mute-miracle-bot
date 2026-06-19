@@ -1,16 +1,8 @@
 {
   "name": "mute-miracle-bot",
   "version": "1.0.0",
-  "scripts": {
-    
-  },
   "dependencies": {
-    "@supabase/supabase-js": "^2.108.2",
-    "grammy": "^1.44.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.0.0",
-    "@types/node-fetch": "^2.6.13",
-    "typescript": "^5.5.0"
+    "grammy": "^1.44.0",
+    "@supabase/supabase-js": "^2.108.2"
   }
 }
