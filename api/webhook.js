@@ -77,3 +77,35 @@ module.exports = async (req, res) => {
     res.status(200).json({ ok: true });
   }
 };
+const CRYPTO_TOKEN = process.env.CRYPTO_TOKEN || '';
+
+bot.command('buy_master', async (ctx) => {
+  const telegramId = ctx.from?.id;
+
+  // Создаём счёт в Crypto Bot
+  const res = await fetch('https://pay.crypt.bot/api/createInvoice', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Crypto-Pay-API-Token': CRYPTO_TOKEN,
+    },
+    body: JSON.stringify({
+      asset: 'USDT',
+      amount: '3',
+      description: 'Тишина Мастеров — доступ на 1 месяц',
+      payload: `master_${telegramId}`,
+      allow_comments: false,
+    }),
+  });
+
+  const data = await res.json();
+  if (data.ok) {
+    await ctx.reply(`💎 Оплати ${data.result.amount} ${data.result.asset} через Crypto Bot:`, {
+      reply_markup: {
+        inline_keyboard: [[{ text: '💳 Оплатить', url: data.result.bot_invoice_url }]]
+      }
+    });
+  } else {
+    await ctx.reply('Ошибка создания счёта. Попробуй позже.');
+  }
+});
