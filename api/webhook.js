@@ -50,7 +50,7 @@ bot.command('master_status', async (ctx) => {
 
 bot.on('pre_checkout_query', (ctx) => ctx.answerPreCheckoutQuery(true));
 
-bot.on('successful_payment', async (ctx) => {
+bot.on('message:successful_payment', async (ctx) => {
   const telegramId = ctx.from?.id;
   await supabase.from('users').upsert({
     id: telegramId,
