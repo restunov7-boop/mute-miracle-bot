@@ -23,10 +23,10 @@ module.exports = async (req, res) => {
     try {
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
       await bot.handleUpdate(body);
-      res.status(200).end();
+      res.status(200).json({ ok: true });
     } catch (e) {
-      console.error(e);
-      res.status(500).end();
+      console.error('Bot error:', e.message);
+      res.status(200).json({ ok: true }); // Всегда 200, чтобы Telegram не повторял
     }
   } else {
     res.status(200).json({ ok: true });
