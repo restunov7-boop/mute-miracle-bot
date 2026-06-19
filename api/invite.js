@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
     <div style="font-size: 40px; margin-bottom: 16px;">🌿</div>
     <h1>Mute Miracle</h1>
     <p>Тихое пространство для здоровья, осознанности и внутреннего покоя. Без навязчивости. Только ты и твой ритм.</p>
-    <a href="https://t.me/life_balance_w_bot" class="btn">Открыть в Telegram</a>
+    <a href="https://t.me/MuteM_bot" class="btn">Открыть в Telegram</a>
     <div class="footer">Практика глубже, когда мы рядом</div>
   </div>
 </body>
