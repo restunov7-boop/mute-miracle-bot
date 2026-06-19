@@ -13,6 +13,7 @@ bot.init().then(() => { botReady = true; });
 
 bot.command('start', async (ctx) => {
   const telegramId = ctx.from?.id;
+  console.log('Start from:', telegramId, 'chat:', ctx.chat.id);
   if (telegramId) {
     await supabase.from('users').upsert({
       id: telegramId,
