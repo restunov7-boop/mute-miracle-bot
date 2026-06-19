@@ -7,6 +7,10 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 );
 
+// Инициализация бота
+let botReady = false;
+bot.init().then(() => { botReady = true; });
+
 bot.command('start', async (ctx) => {
   const telegramId = ctx.from?.id;
   if (telegramId) {
@@ -22,11 +26,12 @@ module.exports = async (req, res) => {
   if (req.method === 'POST') {
     try {
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+      if (!botReady) await bot.init();
       await bot.handleUpdate(body);
       res.status(200).json({ ok: true });
     } catch (e) {
       console.error('Bot error:', e.message);
-      res.status(200).json({ ok: true }); // Всегда 200, чтобы Telegram не повторял
+      res.status(200).json({ ok: true });
     }
   } else {
     res.status(200).json({ ok: true });
