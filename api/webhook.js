@@ -21,7 +21,9 @@ bot.command('start', async (ctx) => {
     });
   }
   await ctx.reply('🌿 Тишина услышана...', {
-  reply_markup: { inline_keyboard: [[{ text: 'Открыть Mute Miracle', url: 'https://t.me/MuteM_bot/app' }]] }
+  reply_markup: { inline_keyboard: [[{ text: 'Открыть Mute Miracle', url: 'https://t.me/MuteM_bot/mutemiracle
+
+' }]] }
 });
 });
 
