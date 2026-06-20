@@ -18,9 +18,7 @@ bot.command('start', async (ctx) => {
       telegram_chat_id: ctx.chat.id,
     });
   }
-  await ctx.reply('🌿 Тишина услышана. Я буду напоминать тебе о саде и круге.', {
-    reply_markup: { inline_keyboard: [[{ text: 'Открыть Mute Miracle', url: 'https://t.me/MuteM_bot/mutemiracle' }]] }
-  });
+  await ctx.reply('🌿 Тишина услышана. Я буду напоминать тебе о саде и круге.');
 });
 
 bot.command('buy_master', async (ctx) => {
@@ -60,7 +58,7 @@ bot.command('master_status', async (ctx) => {
     .eq('id', telegramId).single();
 
   if (user?.has_master_circle && new Date(user.master_circle_expires) > new Date()) {
-    await ctx.reply(`✅ Доступ активен до ${new Date(user.master_circle_expires).toLocaleDateString()}`);
+    await ctx.reply('✅ Доступ активирован! Возвращайся в приложение.');
   } else {
     await ctx.reply('❌ Нет доступа. Напиши /buy_master');
   }
@@ -75,9 +73,7 @@ bot.on('message:successful_payment', async (ctx) => {
     has_master_circle: true,
     master_circle_expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
   });
-  await ctx.reply('🌙 Ты в Круге Мастеров. Возвращайся в приложение.', {
-    reply_markup: { inline_keyboard: [[{ text: 'Открыть Mute Miracle', url: 'https://t.me/MuteM_bot/mutemiracle' }]] }
-  });
+  await ctx.reply('🌙 Ты в Круге Мастеров. Возвращайся в приложение.');
 });
 
 module.exports = async (req, res) => {
